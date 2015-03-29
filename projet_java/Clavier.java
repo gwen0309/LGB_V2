@@ -1,4 +1,4 @@
-package gestionreservation;
+package projet_java;
 
 
 // classe fournissant des fonctions de lecture au clavier -

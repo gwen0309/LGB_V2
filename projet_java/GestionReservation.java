@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionreservation;
+package projet_java;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -156,7 +156,7 @@ public class GestionReservation {
             choix3 = Clavier.lireString();
             if (choix3=="y")
             {
-               v = getClass().gv.saisirVol();
+              // v = getClass().gv.saisirVol();
                /* v = saisirVol(); 
                 resa.getListevol().add(v);*/
             }

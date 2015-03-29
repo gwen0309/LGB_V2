@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionreservation;
+package projet_java;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

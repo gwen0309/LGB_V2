@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionreservation;
+package projet_java;
 
 import java.sql.Time;
 import java.util.Date;
@@ -16,9 +16,9 @@ public class Vol {
     //Attributs
     private String numeroVol;
     private Date dateDepart;
-    private Time heureDepart;
+    private Date heureDepart;
     private Date dateArrivee;
-    private Time heureArrivee;
+    private Date heureArrivee;
     private double prixClasse1;
     private int quantiteClasse1;
     private double prixClasse2;
@@ -28,7 +28,7 @@ public class Vol {
 
     
     // Constructeur
-    public Vol(String noVol, Date dd, Time hd, Date da, Time ha, double pc1, int qc1, double pc2, int qc2, Aeroport ao, Aeroport ad){
+    public Vol(String noVol, Date dd, Date hd, Date da, Date ha, double pc1, int qc1, double pc2, int qc2, Aeroport ao, Aeroport ad){
         numeroVol = noVol;
         dateDepart = dd;
         heureDepart = hd;
@@ -51,7 +51,7 @@ public class Vol {
         return dateDepart;
     }
 
-    public Time getHeureDepart() {
+    public Date getHeureDepart() {
         return heureDepart;
     }
 
@@ -59,7 +59,7 @@ public class Vol {
         return dateArrivee;
     }
 
-    public Time getHeureArrivee() {
+    public Date getHeureArrivee() {
         return heureArrivee;
     }
 
@@ -97,7 +97,7 @@ public class Vol {
         this.dateDepart = dateDepart;
     }
 
-    public void setHeureDepart(Time heureDepart) {
+    public void setHeureDepart(Date heureDepart) {
         this.heureDepart = heureDepart;
     }
 
@@ -105,7 +105,7 @@ public class Vol {
         this.dateArrivee = dateArrivee;
     }
 
-    public void setHeureArrivee(Time heureArrivee) {
+    public void setHeureArrivee(Date heureArrivee) {
         this.heureArrivee = heureArrivee;
     }
 
