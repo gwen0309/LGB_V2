@@ -7,7 +7,6 @@ package gestionreservation;
 
 import java.util.ArrayList;
 import java.util.Date;
-import gestionreservation.GestionVol;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -448,7 +447,7 @@ public class GestionReservation {
     //-------------------------------------------------------------------------
     // Client 
     //-------------------------------------------------------------------------
-    
+    /*
     public void AjouterClient()
     {
         Client c;  
@@ -474,6 +473,14 @@ public class GestionReservation {
         tabClient.add(c); 
         
         System.out.println("Le client a été créé !");
+    }*/
+    
+    public Client AjouterClient(String nom, String prenom, String rue, String cp, String v, String tel, String log, String mdp, String mail) {
+        Client cli;
+        cli = new Client(nom, prenom, rue, cp, v, tel, log, mdp, mail);
+        tabClient.add(cli);
+        System.out.println(tabClient.size());
+        return cli;
     }
     
     public Client RechercherClient(String log_c)
@@ -491,7 +498,7 @@ public class GestionReservation {
                 {
                     trouve = client; 
                     System.out.println("Login déjà utilisé, veuillez choisir un autre login.");
-                    AjouterClient(); 
+                    //AjouterClient(); 
                 }
                 i++; 
             }
