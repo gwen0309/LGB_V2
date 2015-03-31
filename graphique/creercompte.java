@@ -1,6 +1,27 @@
+package graphique; 
+
+import gestionreservation.GestionClient; 
+import gestionreservation.Client;
+import gestionreservation.GestionReservation;
+import gestionreservation.Personne; 
+import java.util.ArrayList; 
+
 public class creercompte extends javax.swing.JFrame {
-    public creercompte() {
+    
+    private GestionReservation gr;
+        private String [] liste;
+        private int nb;
+        private int nbcurrent=2;
+        private ArrayList<Client> cli;
+    
+    public creercompte(GestionReservation grc) {
+        
         initComponents();
+        
+    }
+
+    creercompte() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -244,6 +265,26 @@ public class creercompte extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
+        // "c" à la fin de chaque String pour dire qu'on créer un nouveau client
+        String loginc = nvlogin.getText(); 
+        String mdpc = nvmotdepasse.getText();
+        String nomc = nvnom.getText(); 
+        String prenomc = nvprenom.getText(); 
+        String dobc = nvdatenaissance.getText();
+        String ruec = nvadresse.getText(); 
+        String cpc = nvcodepostal.getText(); 
+        String villec = nvville.getText(); 
+        String telc = nvtelephone.getText(); 
+        String mailc = nvmail.getText(); 
+        
+        
+        Client c;
+        
+            c = gr.RechercherClient(loginc);
+            if (c == null) {
+                
+                c = gr.AjouterClient(nomc, prenomc, ruec, cpc, villec, telc, loginc, mdpc, mailc); 
+            }
     }//GEN-LAST:event_submitActionPerformed
 
     public static void main(String args[]) {

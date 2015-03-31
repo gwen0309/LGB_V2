@@ -1,5 +1,7 @@
+package graphique;
 
-import projetjava.Client;
+
+import gestionreservation.Client;
 public class Identification extends javax.swing.JFrame {
 private creercompte creercompte;
 // private gestionapplication ga; partie de Gwen
@@ -128,7 +130,7 @@ public Identification() {
         String log=login.getText();
         String mdp=motdepasse.getText();
         Client c;
-        if (log.isEmpty() && mdp.isEmpty()) {
+        if (log.isEmpty() || mdp.isEmpty()) {
             erreuridentification ei = new erreuridentification();
             ei.setVisible(true);           
         }
