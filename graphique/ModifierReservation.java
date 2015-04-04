@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package graphique;
-import gestionreservation.GestionReservation;
+import projet_java.GestionReservation;
 /**
  *
  * @author Bastien

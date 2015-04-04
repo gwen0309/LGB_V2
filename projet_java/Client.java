@@ -17,18 +17,19 @@ public class Client extends Personne{
     private int numClient;
     private String login;
     private String motdepasse;
+    private String email; 
     private ArrayList<Reservation> listereservation;
     private static int nb; 
     
     // Constructeur
-    public Client(String nomPers, String prenomPers, String addr, String tel, String log, String mdp) {
-        super(nomPers, prenomPers, addr, tel);
-      
+    public Client(String nomPers, String prenomPers, String rue, String cp, String v, String tel, String log, String mdp, String mail) {
+        super(nomPers, prenomPers, rue, cp, v, tel);
         login = log;
         motdepasse = mdp;
         listereservation = new ArrayList();
         nb ++; 
         numClient = nb; 
+        email = mail; 
     }
     
     //GET
@@ -63,6 +64,14 @@ public class Client extends Personne{
 
     public void setListereservation(ArrayList<Reservation> listereservation) {
         this.listereservation = listereservation;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

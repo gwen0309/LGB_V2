@@ -10,7 +10,7 @@ package graphique;
  */
 public class menuclient extends javax.swing.JFrame {
 
-    private gestionreservation.GestionReservation gr; 
+    private projet_java.GestionReservation gr; 
     /**
      * Creates new form menuclient
      */

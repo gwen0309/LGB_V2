@@ -32,10 +32,14 @@ public class GestionClient {
     //   Methodes   //
     //--------------//
     
-    public void AjouterClient()
+    public Client AjouterClient(String nom, String prenom, String rue, String cp, String ville,String tel, String login, String mdp, String mail)
     {
-        Client c;  
-        String log_c, mdp_c, nom_c, prenom_c, add_c, tel_c; 
+        Client c;        
+        c = new Client (nom, prenom, rue, cp, ville, tel, login, mdp, mail); 
+        tabClient.add(c);
+        return c;
+       /* Client c;  
+        String log_c, mdp_c, nom_c, prenom_c, add_c, cp_c, ville_c, mail_c,  tel_c; 
         int nb = 0; 
         
         System.out.println("Entrez un login: ");
@@ -49,14 +53,21 @@ public class GestionClient {
         nom_c = Clavier.lireString();
         System.out.println("Entrez votre prénom: ");
         prenom_c = Clavier.lireString();
-        System.out.println("Entrez votre adresse: ");
+        System.out.println("Entrez votre adresse (n° et nom de rue) : ");
         add_c = Clavier.lireString();
-        System.out.println("Entrez votre numéros de téléphone: ");
+        System.out.println("Entrez votre code postal : ");
+        cp_c = Clavier.lireString();
+        System.out.println("Entrez votre ville : ");
+        ville_c = Clavier.lireString();
+        System.out.println("Entrez votre numéro de téléphone: ");
         tel_c = Clavier.lireString();
-        c = new Client (nom_c, prenom_c, add_c, tel_c, log_c, mdp_c); 
+        System.out.println("Entrez votre mail: ");
+        mail_c = Clavier.lireString();
+        c = new Client (nom_c, prenom_c, add_c, cp_c, ville_c, tel_c, log_c, mdp_c, mail_c); 
+                
         tabClient.add(c); 
         
-        System.out.println("Le client a été créé !");
+        System.out.println("Le client a été créé !"); */   
     }
     
     public Client RechercherClient(String log_c)
@@ -74,7 +85,7 @@ public class GestionClient {
                 {
                     trouve = client; 
                     System.out.println("Login déjà utilisé, veuillez choisir un autre login.");
-                    AjouterClient(); 
+                    //AjouterClient();   à retraiter
                 }
                 i++; 
             }
@@ -83,7 +94,7 @@ public class GestionClient {
     
         
     
-     public void menu()
+    /* public void menu()
     {
         int r; // pour recupérer le numéro du menu
         System.out.println("Que voulez-vous faire ? ");
@@ -108,7 +119,7 @@ public class GestionClient {
         g = new GestionClient();
         g.menu();
           
-    }
+    }*/
     
 }
     

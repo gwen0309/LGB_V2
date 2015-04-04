@@ -1,7 +1,7 @@
 package graphique;
 
 
-import gestionreservation.Client;
+import projet_java.Client;
 public class Identification extends javax.swing.JFrame {
 private creercompte creercompte;
 // private gestionapplication ga; partie de Gwen
