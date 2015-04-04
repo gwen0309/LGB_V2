@@ -1,4 +1,7 @@
 package graphique;
+
+import projet_java.GestionReservation;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +14,7 @@ package graphique;
  */
 public class menuagent extends javax.swing.JFrame {
 
+    private GestionReservation gr;
     /**
      * Creates new form menuagent
      */
@@ -62,6 +66,11 @@ public class menuagent extends javax.swing.JFrame {
         });
 
         jButton2.setText("Créer un vol ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Créer un Aéroport");
 
@@ -166,12 +175,16 @@ public class menuagent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void creervolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creervolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creervolActionPerformed
+        creervol cv = new creervol(gr);
+        cv.setVisible(true);    }//GEN-LAST:event_creervolActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        creervol cv = new creervol(gr);
+        cv.setVisible(true);     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

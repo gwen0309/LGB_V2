@@ -18,8 +18,8 @@ public class Passager extends Personne{
     private Date dateValidite;
     private String sexe;
     
-    public Passager(String nomPers, String prenomPers, String addr, String tel, String noPasseport, Date dval , String s) {
-        super(nomPers, prenomPers, addr, tel);
+    public Passager(String nomPers, String prenomPers, String rue, String cp, String v, String tel, String noPasseport, Date dval , String s) {
+        super(nomPers, prenomPers, rue, cp, v, tel);
         numeroPasseport = noPasseport;
         dateValidite = dval;
         sexe = s;

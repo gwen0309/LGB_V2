@@ -3,12 +3,10 @@ package graphique;
 import projet_java.Client;
 import projet_java.GestionReservation;
 import java.util.ArrayList; 
-import projet_java.GestionClient;
 
 public class creercompte extends javax.swing.JFrame {
     
     private GestionReservation gr;
-    private GestionClient gc;
 
     
         private String [] liste;
@@ -281,13 +279,13 @@ public class creercompte extends javax.swing.JFrame {
         
         
         Client c;
-        c = gc.RechercherClient(loginc);
+        c = gr.RechercherClient(loginc);
         
         if (c == null) {
-            c = gc.AjouterClient(nomc, prenomc, ruec, cpc, villec, telc, loginc, mdpc, mailc); 
+            c = gr.AjouterClient(nomc, prenomc, ruec, cpc, villec, telc, loginc, mdpc, mailc); 
         }else{
                 // alert : client déja existant
-            }
+        }
     }//GEN-LAST:event_submitActionPerformed
 
     public static void main(String args[]) {
