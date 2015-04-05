@@ -73,6 +73,11 @@ public class menuagent extends javax.swing.JFrame {
         });
 
         jButton3.setText("Créer un Aéroport");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,9 +122,19 @@ public class menuagent extends javax.swing.JFrame {
         gestionvol.add(creervol);
 
         creerdestination.setText("Créer une destination");
+        creerdestination.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creerdestinationActionPerformed(evt);
+            }
+        });
         gestionvol.add(creerdestination);
 
         supprimervol.setText("Supprimer un vol");
+        supprimervol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimervolActionPerformed(evt);
+            }
+        });
         gestionvol.add(supprimervol);
 
         afficherreservationpourvol.setText("Afficher les réservations pour un vol donné");
@@ -185,6 +200,20 @@ public class menuagent extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         creervol cv = new creervol(gr);
         cv.setVisible(true);     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        creeraeroport ca = new creeraeroport(gr);
+        ca.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void creerdestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creerdestinationActionPerformed
+        creeraeroport ca = new creeraeroport(gr);
+        ca.setVisible(true);
+    }//GEN-LAST:event_creerdestinationActionPerformed
+
+    private void supprimervolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimervolActionPerformed
+        supprimervol sv = new supprimervol(gr);
+        sv.setVisible(true);    }//GEN-LAST:event_supprimervolActionPerformed
 
     /**
      * @param args the command line arguments

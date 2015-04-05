@@ -364,20 +364,73 @@ public class creervol extends javax.swing.JFrame {
         String nc2 = nbc2.getText();
         String aorigine = aeroo.getText();
         String adestination = aerod.getText();
-        JOptionPane jop2;
-
+        Aeroport a1, a2;
+        Date ddepart, darrivee, hdepart, harrivee;
         Vol v;
         
-        if(numvol.equalsIgnoreCase(null) || jd.equalsIgnoreCase(null)||md.equalsIgnoreCase(null)||ad.equalsIgnoreCase(null)||ja.equalsIgnoreCase(null)||ma.equalsIgnoreCase(null)||aa.equalsIgnoreCase(null)||heured.equalsIgnoreCase(null)||heurea.equalsIgnoreCase(null)||prix1.equalsIgnoreCase(null)||prix2.equalsIgnoreCase(null)){
-            jop2 = new JOptionPane();
-            jop2.showMessageDialog(null, "Vous n'avez pas rempli tout les champs", "Attention", JOptionPane.WARNING_MESSAGE);
+        if (numvol.length() ==0 || jd.length() ==0 || md.length() ==0 || ad.length() ==0 || ja.length() ==0 ||
+                ma.length() ==0 || aa.length() ==0 ||heured.length() ==0 || heurea.length() ==0 ||
+                prix1.length() ==0 || prix2.length() ==0 || nc1.length() ==0 || nc2.length() ==0 ||
+                aorigine.length() ==0 || adestination.length() ==0)
+	{
+		JOptionPane.showMessageDialog(null, "Tous les champs ne sont pas remplis ! " );
+		return;
+	}	
+        
+        // Verification de l'heure et de la date
+        
+        DateFormat df= new SimpleDateFormat("h:mm a");
+        
+        ddepart = new Date(Integer.parseInt(ad)-1900,Integer.parseInt(md)-1,Integer.parseInt(jd));
+        try{
+            hdepart = df.parse(heured); // Transformation de la string heured en date hdepart selon le format
+        } catch(ParseException e){
+            JOptionPane.showMessageDialog(null, "L'heure n'est pas au bon format, recommencez! ! " );
+            return;       
         }
         
-        v= gr.rechercherVol(numvol) ;
-        if (v == null) {
-            v = gr.SaisirVol(numvol, jd, md, ad, ja, ma, aa, heured, heurea, prix1, prix2, nc1, nc2, aorigine, adestination); 
+        darrivee = new Date(Integer.parseInt(aa)-1900,Integer.parseInt(ma)-1,Integer.parseInt(ja));
+        try{ // do while en  test try catch pour l'interface grpahique
+            harrivee = df.parse(heurea); // Transformation de la string heured en date hdepart selon le format
+        } catch(ParseException e){
+            JOptionPane.showMessageDialog(null, "L'heure n'est pas au bon format, recommencez!  " );
+            return;
+        }
+        
+        if (ddepart.compareTo(darrivee ) > 0) {   // traitement du cas ddepart > darrivee  // alert : erreur darrivee < ddepart resaisir la date arriver
+            JOptionPane.showMessageDialog(null, "Erreur ! Votre date d'arrivée est antérieur à la date de départ " );
+            return;        
+        }else if (ddepart.compareTo(darrivee ) == 0) { // Cas hdépart = harrivee // Resaisir l'heure arrivee
+            if (hdepart.compareTo(harrivee) > 0){ // cas harriver antérieur a hdepart --> resaisir heure et re-test
+                JOptionPane.showMessageDialog(null, "Ereur ! Heure arrivée est antérieur à l'heure départ" );
+                return; 
+            }else if(hdepart.compareTo(harrivee) == 0){ // cas de l'heure départ et heure arrivéé identique
+                JOptionPane.showMessageDialog(null, "Ereur ! Heure arrivée est égale à l'heure départ" );
+                return;         
+            }
+        } 
+        
+        v = gr.rechercherVol(numvol) ;
+        if (v != null) {            
+            a1 = gr.rechercherAeroport(aorigine);
+            if(a1 == null){
+                JOptionPane.showMessageDialog(null, "Aeroport origine inexistant ! Merci de créer l'aéroport avant de créer le vol ! " );
+                return;   
+            }else{
+                a2 = gr.rechercherAeroport(adestination);
+                if(a1 == null){
+                    JOptionPane.showMessageDialog(null, "Aeroport destination inexistant ! Merci de créer l'aéroport avant de créer le vol ! " );
+                    return;   
+                }else{
+                    gr.SaisirVol(numvol, ddepart, hdepart, darrivee, harrivee, Double.parseDouble(prix1), 
+                            Integer.parseInt(nc1), Double.parseDouble(prix2) , Integer.parseInt(nc2), a1, a2); 
+                    JOptionPane.showMessageDialog(null, "Le vol "+numvol+" a bien été créé! " );
+                    return; 
+                }
+            }
         }else{
-                // alert : Vol déja existant
+            JOptionPane.showMessageDialog(null, "Numéro de vol déja existant " );
+            return;        
         }
     }//GEN-LAST:event_submitActionPerformed
 
