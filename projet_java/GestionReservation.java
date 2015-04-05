@@ -34,7 +34,48 @@ public class GestionReservation {
         listeaeroport = new ArrayList();
         tabClient = new ArrayList();
     }
+
+    public ArrayList<Reservation> getTabResa() {
+        return tabResa;
+    }
+
+    public void setTabResa(ArrayList<Reservation> tabResa) {
+        this.tabResa = tabResa;
+    }
+
+    public ArrayList<Vol> getTabVol() {
+        return tabVol;
+    }
+
+    public void setTabVol(ArrayList<Vol> tabVol) {
+        this.tabVol = tabVol;
+    }
+
+    public ArrayList<Vol> getListevol() {
+        return listevol;
+    }
+
+    public void setListevol(ArrayList<Vol> listevol) {
+        this.listevol = listevol;
+    }
+
+    public ArrayList<Aeroport> getListeaeroport() {
+        return listeaeroport;
+    }
+
+    public void setListeaeroport(ArrayList<Aeroport> listeaeroport) {
+        this.listeaeroport = listeaeroport;
+    }
+
+    public ArrayList<Client> getTabClient() {
+        return tabClient;
+    }
+
+    public void setTabClient(ArrayList<Client> tabClient) {
+        this.tabClient = tabClient;
+    }
     
+ 
     
 /********************************************/ 
 /*              RESERVATION                 */
@@ -43,7 +84,7 @@ public class GestionReservation {
     
     public void AjouterReservation()
     {
-        Vol v; 
+        /*Vol v; 
         Reservation r; 
         String c, num_v; 
         Date date_resa; 
@@ -74,7 +115,13 @@ public class GestionReservation {
         
         r = new Reservation(date_resa, c, nb, p, p, v); 
         tabResa.add(r); 
+        */
         
+        Vol v;
+        Reservation r; 
+        r = new Reservation(jour_r, mois_r, annee_r, nb_r, acc_r, paie_r, classe_r); 
+        tabResa.add(r); 
+        return r; 
     }
     
     public void supprimerReservation()
