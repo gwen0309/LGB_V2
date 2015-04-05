@@ -34,48 +34,7 @@ public class GestionReservation {
         listeaeroport = new ArrayList();
         tabClient = new ArrayList();
     }
-
-    public ArrayList<Reservation> getTabResa() {
-        return tabResa;
-    }
-
-    public void setTabResa(ArrayList<Reservation> tabResa) {
-        this.tabResa = tabResa;
-    }
-
-    public ArrayList<Vol> getTabVol() {
-        return tabVol;
-    }
-
-    public void setTabVol(ArrayList<Vol> tabVol) {
-        this.tabVol = tabVol;
-    }
-
-    public ArrayList<Vol> getListevol() {
-        return listevol;
-    }
-
-    public void setListevol(ArrayList<Vol> listevol) {
-        this.listevol = listevol;
-    }
-
-    public ArrayList<Aeroport> getListeaeroport() {
-        return listeaeroport;
-    }
-
-    public void setListeaeroport(ArrayList<Aeroport> listeaeroport) {
-        this.listeaeroport = listeaeroport;
-    }
-
-    public ArrayList<Client> getTabClient() {
-        return tabClient;
-    }
-
-    public void setTabClient(ArrayList<Client> tabClient) {
-        this.tabClient = tabClient;
-    }
     
- 
     
 /********************************************/ 
 /*              RESERVATION                 */
@@ -84,7 +43,7 @@ public class GestionReservation {
     
     public void AjouterReservation()
     {
-        /*Vol v; 
+        Vol v; 
         Reservation r; 
         String c, num_v; 
         Date date_resa; 
@@ -115,13 +74,7 @@ public class GestionReservation {
         
         r = new Reservation(date_resa, c, nb, p, p, v); 
         tabResa.add(r); 
-        */
         
-        Vol v;
-        Reservation r; 
-        r = new Reservation(jour_r, mois_r, annee_r, nb_r, acc_r, paie_r, classe_r); 
-        tabResa.add(r); 
-        return r; 
     }
     
     public void supprimerReservation()
@@ -225,55 +178,11 @@ public class GestionReservation {
 /********************************************/ 
 /*                  VOLS                    */
 /********************************************/
-    public Vol saisirVol(String numvol, String jd, String md, String ad, String ja,String ma,String aa, String heured, String heurea, String prix1, String prix2, String nc1, String nc2, String aorigine, String adestination){
-        Vol v;
-        Aeroport a1, a2;
-        Date ddepart, darrivee;
-        Date hdepart = null, harrivee = null;
-        
-        DateFormat df= new SimpleDateFormat("h:mm a");
-        
-        ddepart = new Date(Integer.parseInt(ad)-1900,Integer.parseInt(md)-1,Integer.parseInt(jd));
-        try{ // do while en  test try catch pour l'interface grpahique
-            hdepart = df.parse(heured); // Transformation de la string heured en date hdepart selon le format
-        } catch(ParseException e){
-            System.out.println("L'heure n'est pas au bon format ! Recommencez!");
-        }
-        
-        darrivee = new Date(Integer.parseInt(aa)-1900,Integer.parseInt(ma)-1,Integer.parseInt(ja));
-        try{ // do while en  test try catch pour l'interface grpahique
-            harrivee = df.parse(heurea); // Transformation de la string heured en date hdepart selon le format
-        } catch(ParseException e){
-            System.out.println("L'heure n'est pas au bon format ! Recommencez!");
-        }
-        
-        // Test sur la date
-        if (ddepart.compareTo(darrivee ) > 0) {   // traitement du cas ddepart > darrivee  // alert : erreur darrivee < ddepart resaisir la date arriver
-                System.out.println("Erreur ! Votre date d'arrivée est antérieur à la date de départ");
-            }else if (ddepart.compareTo(darrivee ) == 0) { // Cas hdépart = harrivee // Resaisir l'heure arrivee
-                if (hdepart.compareTo(harrivee) > 0){ // cas harriver antérieur a hdepart --> resaisir heure et re-test
-                    System.out.println("Ereur ! Heure arrivée est antérieur à l'heure départ");
-                }else if(hdepart.compareTo(harrivee) == 0){ // cas de l'heure départ et heure arrivéé identique
-                    System.out.println("Erreur ! Heure arrivée est égale à l'heure départ");               
-                }
-            }   
-        
-        a1 = rechercherAeroport();
-        if(a1 == null){
-            System.out.println("Aeroport Origine non trouver, merci de  saisir les données de l'aeroport");
-            a1 = saisirAeroport();
-        }
-        
-        a2 = rechercherAeroport();
-        if(a2 == null){
-            System.out.println("Aeroport Destination non trouver, merci de  saisir les données de l'aeroport");
-            a2 = saisirAeroport();
-        }
-        
-        
-        v = new Vol(numvol, ddepart, hdepart, darrivee, harrivee, Double.parseDouble(prix1), Integer.parseInt(nc1), Double.parseDouble(prix2), Integer.parseInt(nc2), a1, a2);
+    
+    public Vol SaisirVol(String numvol, Date ddepart, Date hdepart, Date darrivee, Date harrivee, double prix1, int nc1, double prix2, int nc2, Aeroport a1, Aeroport a2) 
+    {
+        Vol v = new Vol(numvol, ddepart, hdepart, darrivee, harrivee, prix1, nc1, prix2, nc2, a1, a2);
         tabVol.add(v);
-        System.out.println(tabVol.size());
         return v; 
     }
     
@@ -370,8 +279,6 @@ public class GestionReservation {
                 if (client.getLogin().equalsIgnoreCase(log_c))
                 {
                     trouve = client; 
-                    System.out.println("Login déjà utilisé, veuillez choisir un autre login.");
-                    //AjouterClient(); 
                 }
                 i++; 
             }
@@ -397,49 +304,33 @@ public class GestionReservation {
 /********************************************/ 
 /*                AEROPORT                  */
 /********************************************/
-    public Aeroport saisirAeroport(){
+    public Aeroport saisirAeroport(String numa, String noma, String tela, String adda){
+        //throw new UnsupportedOperationException("Not supported yet.");
         Aeroport a;
         String num;
         String nom;       
         String addr;
         String tel;
-        
-        a=rechercherAeroport();
+
+        a=rechercherAeroport(numa);
         if(a == null){
-            System.out.println("Aeroport non trouver ! ");
-            System.out.println("Saisir le numéro de l'aeroport");
-            num= Clavier.lireString();
-
-            System.out.println("Saisir le nom de l'aeroport");
-            nom = Clavier.lireString();
-
-            System.out.println("Saisir le telephone de l'aeroport");
-            tel = Clavier.lireString();
-
-            System.out.println("Saisir l'adresse de l'aeroport");
-            addr = Clavier.lireString();
-
-            a = new Aeroport(num,nom,addr, tel);
+            a = new Aeroport(numa,noma,tela, adda);
             listeaeroport.add(a);
-            System.out.println("Aeroport créer ! ");
         }else{
                 System.out.println("Aeroport existant !");        
         }
         return a;
+
     }
 
-    public Aeroport rechercherAeroport(){ // Article car renvoi un objet de type article
+    public Aeroport rechercherAeroport(String numaeroport){ // Article car renvoi un objet de type article
         Aeroport a, trouve = null; // ou Article trouve = null;
-        String num;
         int i = 0;
-        
-        System.out.println("Numéro de l'aeroport à rechercher: ");
-        num = Clavier.lireString();
-        
+                
         if(!listeaeroport.isEmpty()){
             while(i<listeaeroport.size() && trouve == null){
                 a=listeaeroport.get(i); // recupère le contenu du constructeur du ième élement
-                if(a.getNumeroAeroport().equalsIgnoreCase(num)){
+                if(a.getNumeroAeroport().equalsIgnoreCase(numaeroport)){
                     trouve = a;
                 }
                 i++;
@@ -463,9 +354,11 @@ public class GestionReservation {
         }
     }        
 
-    public Vol SaisirVol(String numvol, String jd, String md, String ad, String ja, String ma, String aa, String heured, String heurea, String prix1, String prix2, String nc1, String nc2, String aorigine, String adestination) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
+    
+
+   
 
     
 }

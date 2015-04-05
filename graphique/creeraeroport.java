@@ -175,7 +175,7 @@ public class creeraeroport extends javax.swing.JFrame {
 
         a = gr.rechercherAeroport(numa) ;
         if (a == null) {
-             gr.SaisirAeroport(numa, noma, tela, adda);
+             gr.saisirAeroport(numa, noma, tela, adda);
         }else{
             JOptionPane.showMessageDialog(null, "Aeroport déja existant " );
             return;

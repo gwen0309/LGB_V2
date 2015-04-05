@@ -3,6 +3,7 @@ package graphique;
 import projet_java.Client;
 import projet_java.GestionReservation;
 import java.util.ArrayList; 
+import javax.swing.JOptionPane;
 
 public class creercompte extends javax.swing.JFrame {
     
@@ -21,7 +22,7 @@ public class creercompte extends javax.swing.JFrame {
     }
 
     creercompte() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -277,14 +278,21 @@ public class creercompte extends javax.swing.JFrame {
         String telc = nvtelephone.getText(); 
         String mailc = nvmail.getText(); 
         
+        if (loginc.length() ==0 || mdpc.length() ==0 || nomc.length() ==0 || prenomc.length() ==0 || dobc.length() ==0 ||
+                ruec.length() ==0 || cpc.length() ==0 ||villec.length() ==0 || telc.length() ==0 ||
+                mailc.length() ==0 )
+	{
+		JOptionPane.showMessageDialog(null, "Tous les champs ne sont pas remplis ! " );
+		return;
+	}
         
         Client c;
         c = gr.RechercherClient(loginc);
-        
         if (c == null) {
             c = gr.AjouterClient(nomc, prenomc, ruec, cpc, villec, telc, loginc, mdpc, mailc); 
         }else{
-                // alert : client déja existant
+                JOptionPane.showMessageDialog(null, "Client déja existant !" );
+		return;        
         }
     }//GEN-LAST:event_submitActionPerformed
 

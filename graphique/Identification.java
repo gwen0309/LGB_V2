@@ -2,8 +2,10 @@ package graphique;
 
 
 import projet_java.Client;
+import projet_java.GestionReservation;
 public class Identification extends javax.swing.JFrame {
 private creercompte creercompte;
+private GestionReservation gr;
 // private gestionapplication ga; partie de Gwen
     
 public Identification() {
@@ -140,9 +142,16 @@ public Identification() {
                 menuagent ma = new menuagent(); //passer en parametre ga.getGc()
                 ma.setVisible(true);
                 
+            }else if(log.equalsIgnoreCase("client") && mdp.equalsIgnoreCase("client")){
+                menuclient mc = new menuclient(); //passer en parametre ga.getGc()
+                mc.setVisible(true);
+            }else{
+                erreuridentification ei = new erreuridentification();
+                ei.setVisible(true); 
             }
             //else + méthode creercompte.recherche
             //comme recherche la ville, on retourne le nom et le prénom qu'on affiche sur la page d'accueil.
+            
         }
     }//GEN-LAST:event_connectActionPerformed
 
@@ -151,13 +160,13 @@ public Identification() {
     }//GEN-LAST:event_quitterActionPerformed
 
     private void creationcompteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creationcompteMouseClicked
-        creercompte cc = new creercompte();
-        cc.setVisible(true);
+
     }//GEN-LAST:event_creationcompteMouseClicked
 
     private void creationcompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creationcompteActionPerformed
-        creercompte cc = new creercompte();
+        creercompte cc = new creercompte(gr);
         cc.setVisible(true);
+        
     }//GEN-LAST:event_creationcompteActionPerformed
 
     /**
